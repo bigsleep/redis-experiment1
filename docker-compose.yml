@@ -1,0 +1,15 @@
+version: "2"
+services:
+  redis:
+    image: redis:4.0.9
+    ports:
+      - "6379:6379"
+  app:
+    image: tkaaad97/haskell-docker:8.2.2
+    command: stack exec redis-experiment1-exe
+    working_dir: /app
+    volumes:
+      - .:/app
+      - .stack:/root/.stack
+    depends_on:
+      - redis
