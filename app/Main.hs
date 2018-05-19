@@ -56,3 +56,5 @@ main = do
         liftIO . print $ a
         b <- hmgetAll getSomeData
         liftIO . print $ b
+        c <- hmgetAll $ (,) <$> getList <*> getSomeData
+        liftIO . print $ c
